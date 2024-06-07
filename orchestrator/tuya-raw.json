@@ -1,0 +1,71 @@
+{
+    "result": [
+        {
+            "active_time": 1706546925,
+            "biz_type": 0,
+            "category": "dj",
+            "create_time": 1706546925,
+            "icon": "smart/icon/ay1478656418970ovCZL/a134c4a91eb70cb3e9cc3f41dcf47f37.png",
+            "id": "eb600ddbcb73cc37f0eigw",
+            "ip": "172.14.43.203",
+            "lat": "27.6600",
+            "local_key": "$NRzp{%1/S4^KW(=",
+            "lon": "-97.3800",
+            "model": "",
+            "name": "Merkury",
+            "online": true,
+            "owner_id": "184090229",
+            "product_id": "hkxr1pg5fhvqfy69",
+            "product_name": "Merkury BW904 Smart Bulb",
+            "status": [
+                {
+                    "code": "switch_led",
+                    "value": true
+                },
+                {
+                    "code": "work_mode",
+                    "value": "white"
+                },
+                {
+                    "code": "bright_value_v2",
+                    "value": 251
+                },
+                {
+                    "code": "colour_data_v2",
+                    "value": "{\"h\":0,\"s\":1000,\"v\":1000}"
+                },
+                {
+                    "code": "scene_data_v2",
+                    "value": "{\"scene_num\":1,\"scene_units\":[{\"bright\":200,\"h\":0,\"s\":0,\"temperature\":1000,\"unit_change_mode\":\"static\",\"unit_gradient_duration\":13,\"unit_switch_duration\":14,\"v\":0}]}"
+                },
+                {
+                    "code": "countdown_1",
+                    "value": 0
+                },
+                {
+                    "code": "music_data",
+                    "value": ""
+                },
+                {
+                    "code": "control_data",
+                    "value": ""
+                }
+            ],
+            "sub": false,
+            "time_zone": "-06:00",
+            "uid": "az1705091324450tfhob",
+            "update_time": 1708958409,
+            "uuid": "e27ebb7e9c8c8887"
+        }
+    ],
+    "success": true,
+    "t": 1708958949282,
+    "tid": "328b1563d4b611eeaa88e22b04041d75",
+    "file": {
+        "name": "tuya-raw.json",
+        "description": "Full raw list of Tuya devices.",
+        "account": "gaswmur4rcy3htyvu3ng",
+        "date": "2024-02-26T08:49:09.169437",
+        "tinytuya": "1.13.1"
+    }
+}
