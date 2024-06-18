@@ -1,6 +1,6 @@
 import tinytuya
 import real_time_transcription
-from access_control import AccessControl
+from circles_of_trust import CirclesOfTrust
 
 d = tinytuya.BulbDevice(
     dev_id='eb600ddbcb73cc37f0eigw',
@@ -11,7 +11,7 @@ d = tinytuya.BulbDevice(
 d.set_socketPersistent(True)
 
 # create access control system
-access_control = AccessControl()
+access_control = CirclesOfTrust()
 
 # define functionalities
 functionalities = [

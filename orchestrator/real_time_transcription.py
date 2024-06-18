@@ -1,6 +1,6 @@
 import speech_recognition as sr
 import bulb_devices_functions
-from access_control import AccessControl
+from circles_of_trust import CirclesOfTrust
 
 # Initialize recognizer
 recognizer = sr.Recognizer()
@@ -27,14 +27,14 @@ def transcribe_audio(access_control):
                 audio = recognizer.listen(source, timeout=5)
 
                 # Process audio in chunks for real-time transcription
-                chunks = recognizer.recognize_google(audio, show_all=True)  # Use show_all=True to get partial results
+                chunks = recognizer.recognize_google(audio, show_all=True)
 
                 # Iterate over the recognized chunks and print words incrementally
                 for chunk in chunks['alternative']:
                     if 'transcript' in chunk:
                         user = 'owner'
                         print("You said:", chunk['transcript'])
-                        process_command(user, chunk['transcript'], access_control)  # Process the command as it's recognized
+                        process_command(user, chunk['transcript'], access_control)
             except sr.WaitTimeoutError:
                 print("Continue listening...")
             except sr.UnknownValueError:
@@ -72,7 +72,8 @@ def process_command(user, sentence, access_control):
         if word in command_map:
             try:
                 # testing purposes (should only execute based on trust level)
-                access_control.execute_device_functionality('untrusted', command_map[word](), 'light')
+                functionality = command_map[word]
+                access_control.execute_device_functionality('untrusted', functionality, 'light')
                 print(f"Executed {command_map[word]} for {determine_trust_level(user)}.")
             except ValueError as e:
                 print(f" ")
