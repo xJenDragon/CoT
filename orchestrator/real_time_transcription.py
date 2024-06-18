@@ -1,6 +1,6 @@
 import speech_recognition as sr
-import bulb_devices_functions
 from circles_of_trust import CirclesOfTrust
+import bulb_devices_functions
 
 # Initialize recognizer
 recognizer = sr.Recognizer()
@@ -34,10 +34,6 @@ def transcribe_audio(access_control):
 
 
 def process_command(user, sentence, access_control):
-    # tokenize the sentence
-    words = sentence.lower().split()
-
-    # map commands
     command_map = {
         'red': bulb_devices_functions.set_red,
         'blue': bulb_devices_functions.set_blue,
@@ -58,12 +54,15 @@ def process_command(user, sentence, access_control):
         'dim': bulb_devices_functions.decrease_brightness
     }
 
+    # tokenize the sentence
+    words = sentence.lower().split()
+
     for word in words:
         if word in command_map:
+            functionality = command_map[word]
             try:
-                # testing purposes (should only execute based on trust level)
-                functionality = command_map[word]
-                access_control.execute_device_functionality('untrusted', functionality(), 'light')
-                print(f"Executed {command_map[word]} for {'untrusted'}.")
+                # Call the function directly
+                access_control.execute_device_functionality('owner', functionality.__name__, 'light')
+                print(f"Executed {functionality.__name__} for {'owner'}.")
             except ValueError as e:
-                print(f" ")
+                print(f"Failed to execute functionality: {e}")

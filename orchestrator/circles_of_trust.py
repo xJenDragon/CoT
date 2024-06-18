@@ -1,5 +1,6 @@
 from device import Device
 from trust_level import TrustLevel
+from device import Device
 
 
 class CirclesOfTrust:
