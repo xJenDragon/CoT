@@ -6,16 +6,6 @@ from circles_of_trust import CirclesOfTrust
 recognizer = sr.Recognizer()
 
 
-def determine_trust_level(user):
-    # For testing purposes
-    trust_levels = {
-        'owner': 'owner',
-        'trusted_user': 'trusted',
-        'guest': 'partially_trusted'
-    }
-    return trust_levels.get(user, 'untrusted')
-
-
 # Function to transcribe speech
 def transcribe_audio(access_control):
     with sr.Microphone() as source:
@@ -73,7 +63,7 @@ def process_command(user, sentence, access_control):
             try:
                 # testing purposes (should only execute based on trust level)
                 functionality = command_map[word]
-                access_control.execute_device_functionality('untrusted', functionality, 'light')
-                print(f"Executed {command_map[word]} for {determine_trust_level(user)}.")
+                access_control.execute_device_functionality('untrusted', functionality(), 'light')
+                print(f"Executed {command_map[word]} for {'untrusted'}.")
             except ValueError as e:
                 print(f" ")

@@ -22,7 +22,7 @@ functionalities = [
 ]
 
 # create base
-access_control.add_device('owner', 'light', functionalities, d)
+access_control.add_device_to_trust_level('owner', 'light', functionalities, d)
 
 while True:
     real_time_transcription.transcribe_audio(access_control)
