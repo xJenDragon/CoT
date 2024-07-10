@@ -2,6 +2,8 @@ import tinytuya
 import real_time_transcription
 from circles_of_trust import CirclesOfTrust
 
+# update
+
 d = tinytuya.BulbDevice(
     dev_id='eb600ddbcb73cc37f0eigw',
     address='Auto',
