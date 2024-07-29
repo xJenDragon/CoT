@@ -1,6 +1,7 @@
 import speech_recognition as sr
 from circles_of_trust import CirclesOfTrust
 import bulb_devices_functions
+import plug_devices_functions
 
 # Initialize recognizer
 recognizer = sr.Recognizer()
@@ -51,7 +52,9 @@ def process_command(user, sentence, access_control):
         # 'increase saturation': bulb_devices_functions.increase_saturation,
         # 'decrease saturation': bulb_devices_functions.decrease_saturation,
         'brighten': bulb_devices_functions.increase_brightness,
-        'dim': bulb_devices_functions.decrease_brightness
+        'dim': bulb_devices_functions.decrease_brightness,
+        'turn off plug': plug_devices_functions.plug_off(),
+        'turn on plug': plug_devices_functions.plug_on()
     }
 
     # tokenize the sentence
