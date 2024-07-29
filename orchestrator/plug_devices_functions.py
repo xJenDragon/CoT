@@ -11,10 +11,12 @@ plug = tinytuya.OutletDevice(
 
 plug.set_socketPersistent(True)
 
+
 # ---------------------------------------- PLUG FUNCTIONS --------------------------------------------------------------
 
 def plug_on():
     plug.turn_on()
+
 
 def plug_off():
     plug.turn_off()
