@@ -1,6 +1,7 @@
 import speech_recognition as sr
 from circles_of_trust import CirclesOfTrust
 import bulb_devices_functions
+import plug_devices_functions
 
 # Initialize recognizer
 recognizer = sr.Recognizer()
@@ -22,7 +23,7 @@ def transcribe_audio(access_control):
                 # Iterate over the recognized chunks and print words incrementally
                 for chunk in chunks['alternative']:
                     if 'transcript' in chunk:
-                        user = 'owner'
+                        user = 'untrusted'
                         print("You said:", chunk['transcript'])
                         process_command(user, chunk['transcript'], access_control)
             except sr.WaitTimeoutError:
@@ -35,34 +36,49 @@ def transcribe_audio(access_control):
 
 def process_command(user, sentence, access_control):
     command_map = {
-        'red': bulb_devices_functions.set_red,
-        'blue': bulb_devices_functions.set_blue,
-        'green': bulb_devices_functions.set_green,
-        'yellow': bulb_devices_functions.set_yellow,
-        'purple': bulb_devices_functions.set_purple,
-        'orange': bulb_devices_functions.set_orange,
-        'pink': bulb_devices_functions.set_pink,
-        'indigo': bulb_devices_functions.set_indigo,
-        'cyan': bulb_devices_functions.set_cyan,
-        'magenta': bulb_devices_functions.set_magenta,
-        'teal': bulb_devices_functions.set_teal,
-        'lime': bulb_devices_functions.set_lime,
-        'white': bulb_devices_functions.set_white_color,
-        # 'increase saturation': bulb_devices_functions.increase_saturation,
-        # 'decrease saturation': bulb_devices_functions.decrease_saturation,
-        'brighten': bulb_devices_functions.increase_brightness,
-        'dim': bulb_devices_functions.decrease_brightness
+        'red': 'set_red',
+        'blue': 'set_blue',
+        'green': 'set_green',
+        'yellow': 'set_yellow',
+        'purple': 'set_purple',
+        'orange': 'set_orange',
+        'pink': 'set_pink',
+        'indigo': 'set_indigo',
+        'cyan': 'set_cyan',
+        'magenta': 'set_magenta',
+        'teal': 'set_teal',
+        'lime': 'set_lime',
+        'white': 'set_white_color',
+        'brighten': 'increase_brightness',
+        'dim': 'decrease_brightness',
+        'off': 'plug_off',
+        'on': 'plug_on'
     }
 
-    # tokenize the sentence
+    # Tokenize the sentence
     words = sentence.lower().split()
 
+    functionality_name = None
     for word in words:
         if word in command_map:
-            functionality = command_map[word]
+            functionality_name = command_map[word]
+            # Determine the device type based on the functionality name
+            if functionality_name in ['set_red', 'set_blue', 'set_green', 'set_yellow', 'set_purple',
+                                      'set_orange', 'set_pink', 'set_indigo', 'set_cyan', 'set_magenta',
+                                      'set_teal', 'set_lime', 'set_white_color', 'increase_brightness',
+                                      'decrease_brightness']:
+                device_type = 'light'
+            elif functionality_name in ['plug_off', 'plug_on']:
+                device_type = 'plug'
+            else:
+                device_type = 'unknown'
+
             try:
-                # Call the function directly
-                access_control.execute_device_functionality('owner', functionality.__name__, 'light')
-                print(f"Executed {functionality.__name__} for {'owner'}.")
+                # Execute the device functionality
+                access_control.execute_device_functionality(user, functionality_name, device_type)
+                print(f"Executed {functionality_name} for {user}.")
             except ValueError as e:
                 print(f"Failed to execute functionality: {e}")
+            break  # Stop processing after the first valid command
+    else:
+        print(f"No valid command found in: {sentence}")

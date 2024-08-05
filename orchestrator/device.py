@@ -8,10 +8,7 @@ class Device:
 
     def execute_functionality(self, functionality_name):
         if functionality_name in self.functionalities:
-            method_to_call = getattr(self.device_instance, functionality_name, None)
-            if method_to_call:
-                method_to_call()
-            else:
-                raise ValueError(f"Functionality {functionality_name} not available for this device.")
+            func = self.functionalities[functionality_name]
+            func()  # Call the function
         else:
             raise ValueError(f"Functionality {functionality_name} not available for this device.")

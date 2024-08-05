@@ -4,9 +4,9 @@ import tinytuya
 
 # for testing purposes
 d = tinytuya.BulbDevice(
-    dev_id='eb600ddbcb73cc37f0eigw',
+    dev_id='eb93fc2a1cc62cb31cpnxj',
     address='Auto',
-    local_key="$NRzp{%1/S4^KW(=",
+    local_key="'|}|CS_-2T{rSMY1",
     version=3.3)
 
 d.set_socketPersistent(True)
