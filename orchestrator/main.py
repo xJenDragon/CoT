@@ -6,7 +6,7 @@ from orchestrator import bulb_devices_functions, plug_devices_functions
 light_device = tinytuya.BulbDevice(
     dev_id='eb93fc2a1cc62cb31cpnxj',
     address='Auto',
-    local_key="'|}|CS_-2T{rSMY1",
+    local_key="mkxm?OD|Au.WBwrf",
     version=3.3)
 
 light_device.set_socketPersistent(True)
@@ -14,7 +14,7 @@ light_device.set_socketPersistent(True)
 plug_device = tinytuya.OutletDevice(
     dev_id='eb1f059adf7874f2acdmzu',
     address='Auto',
-    local_key="IX4(6X=&QZck{H@*",
+    local_key="@Rp>>1Gz&*0ET@Al",
     version=3.3)
 
 plug_device.set_socketPersistent(True)

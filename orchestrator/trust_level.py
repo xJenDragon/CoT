@@ -1,3 +1,6 @@
+from orchestrator.device import Device
+
+
 class TrustLevel:
     def __init__(self, name):
         self.name = name

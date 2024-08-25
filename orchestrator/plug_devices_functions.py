@@ -6,7 +6,7 @@ import tinytuya
 plug = tinytuya.OutletDevice(
     dev_id='eb1f059adf7874f2acdmzu',
     address='Auto',
-    local_key="IX4(6X=&QZck{H@*",
+    local_key="@Rp>>1Gz&*0ET@Al",
     version=3.3)
 
 plug.set_socketPersistent(True)

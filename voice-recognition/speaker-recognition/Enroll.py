@@ -3,7 +3,7 @@ from pvrecorder import PvRecorder
 import time
 
 # ENROLLMENT
-access_key = "c+eQ86/5gX5Z6rypq5n2Wq9q+wxp+e+FUkEvFpsWXGQp+cNLJAg8pg=="
+access_key = "SuA+bf3Nm1N5wbr9J7qSXFNvX7aiLDn2xShnDXg0opLPYPLx2gGjNA=="
 try:
     eagle_profiler = pveagle.create_profiler(access_key=access_key)
 except pveagle.EagleError as e:

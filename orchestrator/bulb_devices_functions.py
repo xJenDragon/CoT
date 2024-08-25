@@ -6,7 +6,7 @@ import tinytuya
 d = tinytuya.BulbDevice(
     dev_id='eb93fc2a1cc62cb31cpnxj',
     address='Auto',
-    local_key="'|}|CS_-2T{rSMY1",
+    local_key="mkxm?OD|Au.WBwrf",
     version=3.3)
 
 d.set_socketPersistent(True)

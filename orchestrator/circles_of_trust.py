@@ -12,6 +12,16 @@ class CirclesOfTrust:
             'device_instance': device_instance
         }
 
+    def remove_device_trust_level(self, trust_level, device_type):
+        if trust_level in self.trust_levels:
+            if device_type in self.trust_levels[trust_level]:
+                del self.trust_levels[trust_level][device_type]
+                print(f"Device of type '{device_type}' removed from trust level '{trust_level}'.")
+            else:
+                print(f"No device of type '{device_type}' found in trust level '{trust_level}'.")
+        else:
+            print(f"Trust level '{trust_level}' does not exist.")
+
     def execute_device_functionality(self, user, functionality_name, device_type):
         if user in self.trust_levels:
             trust_level = self.trust_levels[user]
