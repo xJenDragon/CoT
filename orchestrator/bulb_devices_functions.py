@@ -1,10 +1,9 @@
 import time
-
 import tinytuya
 
 # for testing purposes
 d = tinytuya.BulbDevice(
-    dev_id='eb93fc2a1cc62cb31cpnxj',
+    dev_id='878737463ce90ed3ab14',
     address='Auto',
     local_key="mkxm?OD|Au.WBwrf",
     version=3.3)
